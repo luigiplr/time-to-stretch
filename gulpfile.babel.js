@@ -15,7 +15,6 @@ import packageJson from './package.json'
 import runSequence from 'run-sequence'
 import electron from 'electron-prebuilt'
 import { server as electronConnect } from 'electron-connect'
-import fs from 'fs'
 
 
 /* setup electron connect server for live reloading also declare some vars */

@@ -16,24 +16,26 @@ app.on('window-all-closed', () => app.quit())
 app.on('ready', () => {
   const { workAreaSize } = require('screen').getPrimaryDisplay()
 
+  /*  default size 50% of width & height */
   const mainWindowState = windowStateKeeper({
     defaultWidth: workAreaSize.width * 0.5,
     defaultHeight: workAreaSize.height * 0.5
   })
 
+  /* init the main window */
   const mainWindow = new BrowserWindow({
     center: true,
     frame: true,
     'auto-hide-menu-bar': true,
     resizable: true,
     show: false,
-    backgroundColor: '#212121',
-    ...mainWindowState
+    ...mainWindowState // apply width & height parms from mainWindowState object
   })
 
   /* Remember position and size of window */
   mainWindowState.manage(mainWindow)
 
+  /* Load app HTML file */
   mainWindow.loadURL(`file://${path.join(__dirname, '..', 'app.html')}`)
 
   /* Once main window loads show window to prevent white flash */

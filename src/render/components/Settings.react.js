@@ -1,3 +1,8 @@
+/**
+ * @desc Settings component
+ * @param {func} changePage - proxy function passed from Framework to change the page
+ */
+
 class Settings extends Component {
 
   static propTypes = {
