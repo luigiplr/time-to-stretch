@@ -1,6 +1,5 @@
 /**
- * @desc
- initializes a winston instance w/ user options from config and creates instance logging directory
+ * @desc initializes a winston instance w/ user options from config and creates instance logging directory
  * @param {object} config - config object
  * @param {string} config.logLevel - log level passed to winston, can be any of: error, warn, info, verbose, debug, silly
  * @param {string} config.logDir - directory to store logs

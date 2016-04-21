@@ -3,7 +3,7 @@
  */
 
 /* Electron */
-import { shell, remote } from 'electron'
+import { shell, remote, ipcRenderer } from 'electron'
 
 /* General */
 import minimist from 'minimist'

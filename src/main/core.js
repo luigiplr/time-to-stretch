@@ -2,14 +2,14 @@ import { BrowserWindow, app, screen } from 'electron'
 import windowStateKeeper from 'electron-window-state'
 import minimist from 'minimist'
 import path from 'path'
+import Tray from './tray'
+
 
 process.env.NODE_ENV = minimist(process.argv.slice(2)).dev ? 'development' : 'production'
-  /* BEGIN CHROME FLAGS */
 
+/* CHROME FLAGS */
 app.commandLine.appendSwitch('allow-file-access-from-files', true)
 app.commandLine.appendSwitch('js-flags', '--es_staging')
-
-/* END CHROME FLAGS */
 
 app.on('window-all-closed', () => app.quit())
 
@@ -25,8 +25,9 @@ app.on('ready', () => {
   /* init the main window */
   const mainWindow = new BrowserWindow({
     center: true,
+    skipTaskbar: true,
     frame: true,
-    'auto-hide-menu-bar': true,
+    autoHideMenuBar: true,
     resizable: true,
     show: false,
     ...mainWindowState // apply width & height parms from mainWindowState object
@@ -51,4 +52,7 @@ app.on('ready', () => {
     mainWindow.toggleDevTools()
     mainWindow.focus()
   }
+
+  /* init tray */
+  const tray = new Tray(mainWindow, path.join(__dirname, '..', 'images', 'tray.png'))
 })

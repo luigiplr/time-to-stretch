@@ -16,6 +16,10 @@ class Framework extends Component {
     dir: path.join(remote.app.getPath('appData'), remote.app.getName(), 'logs')
   })
 
+  componentDidMount() {
+    ipcRenderer.on('changePage', ::this.changePage)
+  }
+
   /**
    * @desc Proxy function passed to components, changes the page of the app.
    * @param {string} page - name of new page to transition to

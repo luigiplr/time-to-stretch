@@ -25,14 +25,13 @@ let PRODUCTION_BUILD = true
 /* Build Tasks */
 
 gulp.task('build-core', () =>
-  gulp.src('src/main/core.js')
+  gulp.src('src/main/*.js')
   .pipe(plumber())
   .pipe(babel())
   .on('error', err => {
     gutil.log(gutil.colors.red('[Main Tread Code Compilation Error]'))
     gutil.log(gutil.colors.red(err.message))
   })
-  .pipe(concat('core.js'))
   .pipe(gulp.dest('build/js')))
 
 gulp.task('build-render', () => gulp.src('src/render/**/*.js')
